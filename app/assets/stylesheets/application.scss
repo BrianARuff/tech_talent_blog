@@ -1,1 +1,13 @@
 @import "bootstrap";
+
+body {
+	background: #0b4c5f;
+}
+
+.container {
+	background: rgba(255,255,255,0.8);
+	margin-top: 20px;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	border-radius: 4px;
+}

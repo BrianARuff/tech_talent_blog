@@ -1,25 +1,27 @@
 <%= form_with(model: @comment, local: true) do |form| %>
-	<% if @comment.errors.any? %>
-		<div class="error_explanation">
-			<h2><%= pluralize(@comment.errors.count, "error")%> Prohibited comment from saving.</h2>
-		</div>
-		<ul>
-			<% @comment.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-		</ul>
-			<%end%>
-	<%end%>
-
+<% if @comment.errors.any? %>
+<div class="error_explanation">
+	<h2><%= pluralize(@comment.errors.count, "Error")%> Prohbiited this comment from being made:</h2>
+	<ul>
+		<%= @comment.errors.full_messages.each do |message| %>
+		<li><% message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
 	<div class="form-group">
-		<%= form.text_field :author, class: "form-control", placeholder: "Name" %>
-	</div>	
-	<div class="form-group">
-		<%= form.text_area :comment_entry, class: "form-control", placeholder: "Please enter your comment" %>
-	</div>	
-	<div class="form-group">
-		<%= form.number_field :blog_post_id, value: @blog_post.id, hidden: true %>
+		<%= form.text_field :author, class: "form-control", placeholder: "Title" %>
 	</div>
+	
 	<div class="form-group">
-		<%= form.submit "Post Comment", class: "btn btn-success" %>
+		<%= form.text_field :comment_entry, class: "form-control", placeholder: "Type comment here...", rows: 4 %>
 	</div>
-<%end%>
+	
+	<div class="form-group">
+		<%= form.hidden_field :blog_post_id, value: @blog_post.id%>
+	</div>
+	
+		<%= form.submit "Post", class: "btn btn-primary" %>
+</div>
+<% end %>
